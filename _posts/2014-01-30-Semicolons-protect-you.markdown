@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Semicolon s protect you
+title: Semicolons protect you
 date: 2014-01-30
 ---
 
