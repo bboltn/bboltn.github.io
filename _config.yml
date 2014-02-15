@@ -1,3 +1,5 @@
 name: brianbolton.me
 markdown: redcarpet
 pygments: true
+timezone: America/New_York
+encoding: UTF-8
