@@ -1,0 +1,7 @@
+---
+layout: post
+title: aspx page
+date: 2006-11-20
+---
+
+The following code is used by the aspx page to receive and parse the input string.   This code assumes the input is meant to be interpreted as a string.  The string could be xml or just text.  I send plain text in previous javascript samples.<br /><br />//I use this page to receive and parse any packets sent to my aspx page<br />public string GetInputStream(){<br />   long length = Request.InputStream.Length;<br />   byte [] b = new byte[length];<br />   Request.InputStream.Read(b,0,(int)length);<br />   string inputstream = string.Empty;<br />   foreach(byte by in b)<br />       inputstream += Convert.ToChar(by).ToString();<br />      <br />   return inputstream;   <br />}<br /><br />//you call the code like this<br />string input = GetInputStream();
