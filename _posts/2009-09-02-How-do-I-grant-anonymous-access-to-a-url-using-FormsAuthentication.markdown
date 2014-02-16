@@ -4,4 +4,99 @@ title: How do I grant anonymous access to a url using FormsAuthentication
 date: 2009-09-02
 ---
 
-I originally posted this question on <a href="http://stackoverflow.com/questions/1354185/how-do-i-grant-anonymous-access-to-a-url-using-formsauthentication/1370820#1370820">stackoverflow.com</a>.  I've re-written it for this post.<br /><span class="vote-count-post"></span><div class="post-text">                 <p>The webapp I was working on required authentication for most tasks.  This means, you need to login to do just about anything.  There were a few urls, namely the /default.aspx, /scripts, /images, and /styles, that I wanted any user to be able to access.<br /></p><div class="post-text"><p>After reading the FormsAuthentication documentation up and down I came across the location tag.</p>  <p>The location tag can be used to configure a specific url resource. In my case I wanted to configure a few urls and folders specifically.</p><br />&lt;location allowOverride="true"&gt;<br />  &lt;system.web&gt;<br />    &lt;authentication mode="Forms"&gt;<br />      &lt;forms loginUrl="~/Account/LogOn" timeout="2880" slidingExpiration="true" /&gt;<br />    &lt;/authentication&gt;<br />    &lt;authorization&gt;<br />      &lt;deny users="?" /&gt;<br />    &lt;/authorization&gt;<br />  &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br />&lt;location path="default.aspx"&gt;<br />  &lt;system.web&gt;<br />    &lt;authorization&gt;<br />      &lt;allow users="?"/&gt;<br />    &lt;/authorization&gt;<br />  &lt;/system.web&gt;<br />&lt;/location&gt;<br /><p></p><p>This still didn't work.  I hoped this would allow anonymous access to default.aspx but it didn't.<br /></p><p>It was a simple enough fix.  I didn't have the allow/deny in the correct order. According to MSDN, "the authorization module grants or denies access to a URL resource depending on whether the first access rule found is an allow or a deny rule."</p>  <p>In my case I needed to put all my public stuff first (default.aspx, home,styles, images, scripts) and then I put a deny on everything else. I left out the path on the last location tag. That makes it apply to all files and subfolders.</p>  <p>End result, a user can get to the homepage, pull up images and styles, but for everything else must log in.</p>  <p>Here's my web config file now:<span style="font-family:monospace;"><br /></span></p><p><br /><span style="font-family:monospace;"></span></p>  </div></div><br />&lt;!--AUTHORIZATION AND AUTHENTICATION RULES--&gt;<br />&lt;location path="default.aspx"&gt;<br /> &lt;system.web&gt;<br />   &lt;authorization&gt;<br />     &lt;allow users="?"/&gt;<br />   &lt;/authorization&gt;<br /> &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br />&lt;location path="Home"&gt;<br /> &lt;system.web&gt;<br />   &lt;authorization&gt;<br />     &lt;allow users="?"/&gt;<br />   &lt;/authorization&gt;<br /> &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br />&lt;location path="Styles"&gt;<br /> &lt;system.web&gt;<br />   &lt;authorization&gt;<br />     &lt;allow users="?"/&gt;<br />   &lt;/authorization&gt;<br /> &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br />&lt;location path="Scripts"&gt;<br /> &lt;system.web&gt;<br />   &lt;authorization&gt;<br />     &lt;allow users="?"/&gt;<br />   &lt;/authorization&gt;<br /> &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br />&lt;location path="images"&gt;<br /> &lt;system.web&gt;<br />   &lt;authorization&gt;<br />     &lt;allow users="?"/&gt;<br />   &lt;/authorization&gt;<br /> &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br /><br />&lt;location allowOverride="true"&gt;<br /> &lt;system.web&gt;<br />   &lt;authentication mode="Forms"&gt;<br />     &lt;forms loginUrl="~/Account/LogOn" timeout="2880" slidingExpiration="true" /&gt;<br />   &lt;/authentication&gt;<br />   &lt;authorization&gt;<br />     &lt;deny users="?" /&gt;<br />   &lt;/authorization&gt;<br /> &lt;/system.web&gt;<br />&lt;/location&gt;<br /><br />&lt;!--END AUTHORIZATION AND AUTHENTICATION RULES--&gt;
+I originally posted this question on [stackoverflow.com](http://stackoverflow.com/questions/1354185/how-do-i-grant-anonymous-access-to-a-url-using-formsauthentication/1370820#1370820). I've re-written it for this post.
+
+The webapp I was working on required authentication for most tasks. This means, you need to login to do just about anything. There were a few urls, namely the /default.aspx, /scripts, /images, and /styles, that I wanted any user to be able to access.
+
+After reading the FormsAuthentication documentation up and down I came across the location tag.
+
+The location tag can be used to configure a specific url resource. In my case I wanted to configure a few urls and folders specifically.
+
+{% highlight xml %}
+<location allowOverride="true">
+<system.web>
+<authentication mode="Forms">
+<forms loginUrl="~/Account/LogOn" timeout="2880" slidingExpiration="true" />
+</authentication>
+<authorization>
+<deny users="?" />
+</authorization>
+</system.web>
+</location>
+
+<location path="default.aspx">
+<system.web>
+<authorization>
+<allow users="?"/>
+</authorization>
+</system.web>
+</location>
+{% endhighlight %}
+
+This still didn't work. I hoped this would allow anonymous access to default.aspx but it didn't.
+
+It was a simple enough fix. I didn't have the allow/deny in the correct order. According to MSDN, "the authorization module grants or denies access to a URL resource depending on whether the first access rule found is an allow or a deny rule."
+
+In my case I needed to put all my public stuff first (default.aspx, home,styles, images, scripts) and then I put a deny on everything else. I left out the path on the last location tag. That makes it apply to all files and subfolders.
+
+End result, a user can get to the homepage, pull up images and styles, but for everything else must log in.
+
+Here's my web config file now:
+
+
+{% highlight xml %}
+<!--AUTHORIZATION AND AUTHENTICATION RULES-->
+<location path="default.aspx">
+<system.web>
+<authorization>
+<allow users="?"/>
+</authorization>
+</system.web>
+</location>
+
+<location path="Home">
+<system.web>
+<authorization>
+<allow users="?"/>
+</authorization>
+</system.web>
+</location>
+
+<location path="Styles">
+<system.web>
+<authorization>
+<allow users="?"/>
+</authorization>
+</system.web>
+</location>
+
+<location path="Scripts">
+<system.web>
+<authorization>
+<allow users="?"/>
+</authorization>
+</system.web>
+</location>
+
+<location path="images">
+<system.web>
+<authorization>
+<allow users="?"/>
+</authorization>
+</system.web>
+</location>
+
+
+<location allowOverride="true">
+<system.web>
+<authentication mode="Forms">
+<forms loginUrl="~/Account/LogOn" timeout="2880" slidingExpiration="true" />
+</authentication>
+<authorization>
+<deny users="?" />
+</authorization>
+</system.web>
+</location>
+
+<!--END AUTHORIZATION AND AUTHENTICATION RULES-->
+{% endhighlight %}

@@ -4,4 +4,6 @@ title: proFTPd
 date: 2007-01-05
 ---
 
-I just setup a proFTPd server on my Ubuntu machine.  I can connect via <a href="http://www.net2ftp.com">net2ftp.com</a> and I can connect locally using the gFTP client.  But I can't connect from the windows machine on my network or from a windows machine externally.  I don't think it's OS related.  Most likely a setting on in the ftp client.  <br /><br />Just in case you happen to be a FTP wizard leave a comment and give me some ideas.
+I just setup a proFTPd server on my Ubuntu machine. I can connect via [net2ftp.com](http://www.net2ftp.com/) and I can connect locally using the gFTP client. But I can't connect from the windows machine on my network or from a windows machine externally. I don't think it's OS related. Most likely a setting on in the ftp client. 
+
+Just in case you happen to be a FTP wizard leave a comment and give me some ideas.

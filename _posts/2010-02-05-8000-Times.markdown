@@ -4,4 +4,14 @@ title: 8000 Times
 date: 2010-02-05
 ---
 
-I was having a hard time replicating an issue users were having on our website.  It wasn't allowing them to login.  I was never able to manually replicate the error.  This led me to create an automated tester.<br /><br />Using Coldfusion and CFHTTP, I created a webpage that logged into the site and then logged out.  If it was a success, the page output a meta-refresh tag.  If it was a failure, it displayed an alert box with some debugging code.  The refresh tag would just run the page again.  The alert box would change the browser window orange.  IE8 title bar changes orange if you aren't focused on the window and an alert box displays.<br /><br />At this point I opened 10 tabs in IE and had them all point to this page.  The meta-refresh tag was set to zero which meant it would run immediately again.  After 10 minutes I started getting orange tabs which meant I was getting errors and some real insight into what was wrong with the website.  This was a Good Thing (tm).<br /><br />That was yesterday.  Today Dan asks me, "Brian, did you sign in and out 8000 times yesterday."<br /><br />ummmm yeah I did... sorry about that.
+I was having a hard time replicating an issue users were having on our website. It wasn't allowing them to login. I was never able to manually replicate the error. This led me to create an automated tester.
+
+Using Coldfusion and CFHTTP, I created a webpage that logged into the site and then logged out. If it was a success, the page output a meta-refresh tag. If it was a failure, it displayed an alert box with some debugging code. The refresh tag would just run the page again. The alert box would change the browser window orange. IE8 title bar changes orange if you aren't focused on the window and an alert box displays.
+
+At this point I opened 10 tabs in IE and had them all point to this page. The meta-refresh tag was set to zero which meant it would run immediately again. After 10 minutes I started getting orange tabs which meant I was getting errors and some real insight into what was wrong with the website. This was a Good Thing (tm).
+
+That was yesterday. Today Dan asks me, 
+
+> Brian, did you sign in and out 8000 times yesterday.
+
+ummmm yeah I did... sorry about that.
