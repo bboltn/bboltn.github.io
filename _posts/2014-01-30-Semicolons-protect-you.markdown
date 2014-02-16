@@ -3,5 +3,62 @@ layout: post
 title: Semicolons protect you
 date: 2014-01-30
 ---
+I've been wondering why some people put a semicolon at the end of their objects
 
-I've been wondering why some people put a semicolon at the end of their objects<br /><div class="line-pre"></div><div class="line" id="file-1-LC1"><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">var func = function(){</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-1-LC2"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; console.log("hey3");</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-1-LC3"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">}; //semicolon</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">  </span><div class="line" id="file-1-LC6"><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">var func = function(){</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-1-LC7"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; console.log("hey3");</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-1-LC8"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">} //no semicolon&nbsp; </span></div><br /><br />Both of these above statements define the function 'func' and nothing more.&nbsp; Lets see what happens when you forget it.<br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span><div class="line-pre"></div><div class="line" id="file-2-LC1"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">var func = function(){</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-2-LC2"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; console.log("hey2");</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-2-LC3"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">}</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-2-LC4"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">//comments and whitespace here</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-2-LC5"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">(true);</span><br /></div><br />This immediately defines func and then executes it.&nbsp; Whoops!&nbsp; Probably didn't mean to do that.&nbsp; This can happen if you're not careful OR if you are using a tool that combines your javascript code into one file.<br /><br /><div class="line-pre"></div><div class="line" id="file-3-LC1"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">var func = function(){</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-3-LC2"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; console.log("hey3");</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-3-LC3"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">};//semicolon here protects you</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-3-LC4"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">(true);</span></div><br /><br />This creates the function 'func' and the expression (true).<br /><br />Here's another scenario you might run into<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">.</span><br /><br /><div class="line-pre"></div><div class="line" id="file-4-LC1"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">var x = {</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-4-LC2"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; 'func':function(){</span><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; console.log("hey5")</span><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; }</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-4-LC3"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">}</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-4-LC4"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">.func()</span></div><br /><br />This immediately executes func and now x is undefined.&nbsp; Did you mean to do this?<br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span><br /><div class="line" id="file-5-LC1"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">var x = {</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-5-LC2"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">'func':function(){</span><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; console.log("hey5")</span><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp; }</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-5-LC3"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">};</span></div><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><div class="line" id="file-5-LC4"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">.func()</span></div><br /><br />This is a syntax error.&nbsp; Probably a good thing.<br /><br />View this <a href="http://jsfiddle.net/627YC/2/" target="_blank">fiddle</a> for an interactive version of this code.  <script src="https://raw.github.com/moski/gist-Blogger/master/public/gistLoader.js" type="text/javascript"></script>
+{% highlight javascript %}
+var func = function(){
+    console.log("hey3");
+}; //semicolon
+
+var func = function(){
+    console.log("hey3");
+} //no semicolon 
+{% endhighlight %}
+
+
+Both of these above statements define the function 'func' and nothing more.  Lets see what happens when you forget it.
+
+{% highlight javascript %}
+var func = function(){
+    console.log("hey2");
+}
+//comments and whitespace here
+(true);
+{% endhighlight %}
+
+This immediately defines func and then executes it.  Whoops!  Probably didn't mean to do that.  This can happen if you're not careful OR if you are using a tool that combines your javascript code into one file.
+
+{% highlight javascript %}
+var func = function(){
+    console.log("hey3");
+};//semicolon here protects you
+(true);
+{% endhighlight %}
+
+This creates the function 'func' and the expression (true).
+
+Here's another scenario you might run into.
+
+{% highlight javascript %}
+var x = {
+    'func':function(){
+        console.log("hey5")
+    }
+}
+.func()
+{% endhighlight %}
+
+This immediately executes func and now x is undefined.  Did you mean to do this?
+
+{% highlight javascript %}
+var x = {
+'func':function(){
+    console.log("hey5")
+    }
+};
+.func()
+{% endhighlight %}
+
+This is a syntax error.  Probably a good thing.
+
+View this [fiddle](http://jsfiddle.net/627YC/2/) for an interactive version of this code.
