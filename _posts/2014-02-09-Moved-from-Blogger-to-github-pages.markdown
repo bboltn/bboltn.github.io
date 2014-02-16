@@ -9,3 +9,5 @@ I started researching static site generators.  Jekyll looked good with an added 
 
 Nearly a year ago I decided to create [this program](https://github.com/progrn/csb) that would convert my blogger templates to a
 generic XML file.  With minimal tweaking I got it to export markdown files instead.
+
+That got me 80% of the way.  I went post by post and reviewed them for formatting issues.
