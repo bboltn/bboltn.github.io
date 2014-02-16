@@ -4,4 +4,133 @@ title: Basic CRUD app for Python and Google App Engine
 date: 2012-11-20
 ---
 
-I wrote a very basic CRUD app for Google App Engine in Python. &nbsp;It's a basic sample on how to add, edit, delete, and list a single entity in GAE. &nbsp;I didn't see anything like this on the web when I was learning GAE. &nbsp;I hope this helps you.<br /><br />You need python 2.7 installed and Google App Engine installed to get up and running. &nbsp;I ran into one issue on Windows where nothing worked until I specified the version of python in GAE. &nbsp;I didn't have this issue on Mac OS X. <br /><br /><br /><br /><b>basiccrud.py</b><br /><pre style="background-color: #eeeeee; border: 1px dashed #999999; color: black; font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; font-size: 12px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code>import webapp2<br />import cgi<br />import datetime<br />import urllib<br /><br />from google.appengine.ext import db<br />from google.appengine.api import users<br /><br />#blog###################################################<br />class BlogPost(db.Model):<br />    title = db.StringProperty()<br />    content = db.StringProperty()<br />    date = db.DateTimeProperty(auto_now_add=True)<br /><br />def BlogPostKey():<br />    return db.Key.from_path('Blog','default_blog')<br /><br />def BlogById(id):<br />    return BlogPost.get_by_id(id,parent=BlogPostKey())<br /><br /><br />#PAGES#################################################<br />class MainPage(webapp2.RequestHandler):<br />    def get(self):<br />        self.response.write(<br />            '&lt;html&gt;'<br />                '&lt;body&gt;'<br />                    '&lt;a href="/AddPost"&gt;AddPost&lt;/a&gt;')<br /><br />        BlogPosts = db.GqlQuery("select * from BlogPost order by date desc limit 10")<br /><br />        self.response.write('&lt;ul&gt;')<br /><br />        for post in BlogPosts:<br />            self.response.write('&lt;li&gt;{title} at {date} key: {key}&lt;a href="/EditPost?id={key}"&gt;Edit&lt;/a&gt;&lt;/li&gt;'<br />                .format(title=post.title,date=post.date,key=post.key().id()))<br /><br />        self.response.write('&lt;/ul&gt;')<br />        self.response.write('&lt;/body&gt;&lt;/html&gt;')<br /><br /><br />class AddPost(webapp2.RequestHandler):<br />    def get(self):<br />        self.response.write(<br />            '&lt;html&gt;'<br />                '&lt;body&gt;'<br />                '&lt;form action="/AddPost" method="POST"&gt;'<br />                    'TITLE:&lt;input type=text name=title value=""/&gt;'<br />                    '&lt;br&gt;CONTENT:&lt;input type=text name=content value=""/&gt;'<br />                    '&lt;br&gt;&lt;input type=submit text="submit"/&gt;'<br />                '&lt;/form&gt;'<br />                '&lt;/body&gt;'<br />            '&lt;/html&gt;')<br />    def post(self):<br />        title = self.request.get('title')<br />        content = self.request.get('content')<br />        newpost = BlogPost(parent=BlogPostKey())<br />        newpost.title = title<br />        newpost.content = content<br />        newpost.put()<br />        self.redirect('/')<br /><br />class EditPost(webapp2.RequestHandler):<br />    def get(self):<br />        id = int(self.request.get('id'))<br />        newpost = BlogById(id)<br />        self.response.write(<br />            '&lt;html&gt;'<br />                '&lt;body&gt;'<br />                '&lt;form action="/EditPost" method="POST"&gt;'<br />                    '&lt;input type="hidden" value="{id}" name="id"&gt;'<br />                    'TITLE:&lt;input type=text name=title value="{title}"/&gt;'<br />                    '&lt;br&gt;CONTENT:&lt;input type=text name=content value="{content}"/&gt;'<br />                    '&lt;br&gt;&lt;input type=submit value="Save"/&gt;'<br />                '&lt;/form&gt;'<br />                '&lt;form action="/DeletePost" method="POST"&gt;'<br />                    '&lt;input type="hidden" value="{id}" name="id"&gt;'<br />                    '&lt;br&gt;&lt;input type=submit value="delete"/&gt;'<br />                '&lt;/form&gt;'<br />                '&lt;/body&gt;'<br />            '&lt;/html&gt;'<br />            .format(title=newpost.title,content=newpost.content,id=newpost.key().id()))<br />    def post(self):<br />        title = self.request.get('title')<br />        content = self.request.get('content')<br />        id = int(self.request.get('id'))<br />        newpost = BlogById(id)<br />        newpost.title = title<br />        newpost.content = content<br />        newpost.put()<br />        self.redirect('/')<br /><br />class DeletePost(webapp2.RequestHandler):<br />    def post(self):<br />        id = int(self.request.get('id'))<br />        newpost = BlogById(id)<br />        newpost.delete()<br />        self.redirect('/')<br /><br /><br />app = webapp2.WSGIApplication([('/', MainPage),<br />                                ('/AddPost',AddPost),<br />                                ('/EditPost',EditPost),<br />                                ('/DeletePost',DeletePost)],<br />                              debug=True)<br /></code></pre><b>app.yaml</b><br /><pre style="background-color: #eeeeee; border: 1px dashed #999999; color: black; font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; font-size: 12px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;"><code>application: basiccrud<br />version: 1<br />runtime: python27<br />api_version: 1<br />threadsafe: true<br /><br />handlers:<br />- url: /.*<br />  script: basiccrud.app<br /></code></pre>
+I wrote a very basic CRUD app for Google App Engine in Python.  It's a basic sample on how to add, edit, delete, and list a single entity in GAE.  I didn't see anything like this on the web when I was learning GAE.  I hope this helps you.
+
+You need python 2.7 installed and Google App Engine installed to get up and running.  I ran into one issue on Windows where nothing worked until I specified the version of python in GAE.  I didn't have this issue on Mac OS X. 
+
+### basiccrud.py
+
+{% highlight python %}
+import webapp2
+import cgi
+import datetime
+import urllib
+
+from google.appengine.ext import db
+from google.appengine.api import users
+
+#blog###################################################
+class BlogPost(db.Model):
+    title = db.StringProperty()
+    content = db.StringProperty()
+    date = db.DateTimeProperty(autonowadd=True)
+
+def BlogPostKey():
+    return db.Key.frompath('Blog','defaultblog')
+
+def BlogById(id):
+    return BlogPost.getbyid(id,parent=BlogPostKey())
+
+
+#PAGES#################################################
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        self.response.write(
+            '<html>'
+                '<body>'
+                    '<a href="/AddPost">AddPost</a>')
+
+        BlogPosts = db.GqlQuery("select * from BlogPost order by date desc limit 10")
+
+        self.response.write('<ul>')
+
+        for post in BlogPosts:
+            self.response.write('<li>{title} at {date} key: ' \
+            '{key}<a href="/EditPost?id={key}">Edit</a></li>'
+                .format(title=post.title,date=post.date,key=post.key().id()))
+
+        self.response.write('</ul>')
+        self.response.write('</body></html>')
+
+
+class AddPost(webapp2.RequestHandler):
+    def get(self):
+        self.response.write(
+            '<html>'
+                '<body>'
+                '<form action="/AddPost" method="POST">'
+                    'TITLE:<input type=text name=title value=""/>'
+                    '<br>CONTENT:<input type=text name=content value=""/>'
+                    '<br><input type=submit text="submit"/>'
+                '</form>'
+                '</body>'
+            '</html>')
+    def post(self):
+        title = self.request.get('title')
+        content = self.request.get('content')
+        newpost = BlogPost(parent=BlogPostKey())
+        newpost.title = title
+        newpost.content = content
+        newpost.put()
+        self.redirect('/')
+
+class EditPost(webapp2.RequestHandler):
+    def get(self):
+        id = int(self.request.get('id'))
+        newpost = BlogById(id)
+        self.response.write(
+            '<html>'
+                '<body>'
+                '<form action="/EditPost" method="POST">'
+                    '<input type="hidden" value="{id}" name="id">'
+                    'TITLE:<input type=text name=title value="{title}"/>'
+                    '<br>CONTENT:<input type=text name=content value="{content}"/>'
+                    '<br><input type=submit value="Save"/>'
+                '</form>'
+                '<form action="/DeletePost" method="POST">'
+                    '<input type="hidden" value="{id}" name="id">'
+                    '<br><input type=submit value="delete"/>'
+                '</form>'
+                '</body>'
+            '</html>'
+            .format(title=newpost.title,
+                content=newpost.content,id=newpost.key().id()))
+    def post(self):
+        title = self.request.get('title')
+        content = self.request.get('content')
+        id = int(self.request.get('id'))
+        newpost = BlogById(id)
+        newpost.title = title
+        newpost.content = content
+        newpost.put()
+        self.redirect('/')
+
+class DeletePost(webapp2.RequestHandler):
+    def post(self):
+        id = int(self.request.get('id'))
+        newpost = BlogById(id)
+        newpost.delete()
+        self.redirect('/')
+
+
+app = webapp2.WSGIApplication([('/', MainPage),
+                                ('/AddPost',AddPost),
+                                ('/EditPost',EditPost),
+                                ('/DeletePost',DeletePost)],
+                              debug=True)
+
+{% endhighlight %}
+
+### app.yaml
+
+{% highlight yaml %}
+application: basiccrud
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /.*
+  script: basiccrud.app
+{% endhighlight %}

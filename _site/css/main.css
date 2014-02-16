@@ -185,6 +185,15 @@ a:visited { color: #a0a; }
   margin-top:0;
 }
 
+.post ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.post .highlight {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
 /* terminal */
 .post pre.terminal {
