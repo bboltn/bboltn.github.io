@@ -4,7 +4,7 @@ title: 2nd Annual National Day of Civic Hacking
 date: 2014-06-08
 ---
 
-Last weekend, May 31th - June 1st, Geoffrey Shoultz, Patrick Smith, and I competed in the local "National Day of Civic Hacking." Our app
+Last weekend, May 31th - June 1st, [Geoffrey Shoultz](mailto:silverag47@gmail.com), [Patrick Smith](mailto:mpatricks@gmail.com), and I competed in the local "National Day of Civic Hacking." Our app
 was called "Let Your Voice Be Heard."  If you want to get in touch with your senator, your mayor, find out where to vote, or how to register
 to vote, then this is your app. Let your voice be heard!
 
@@ -21,6 +21,6 @@ many people have.
 We won btw :)
 
 ![Let your voice be heard](/images/lyvbh1.png)
-![Let your voice be heard](/images/lyvbh2.png)
-![Let your voice be heard](/images/lyvbh3.png)
-![Let your voice be heard](/images/lyvbh4.png)
+![House of Representatives](/images/lyvbh2.png)
+![State Government](/images/lyvbh3.png)
+![Local Government](/images/lyvbh4.png)
