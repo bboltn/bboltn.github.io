@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "First" Friday Hackathon - July 11, 2014
+title: First Friday Hackathon - July 11, 2014
 date: 2014-07-11
 ---
 
