@@ -13,7 +13,7 @@ done by another member of the group several hackathons ago.
 
 {% highlight bash %}
 ffmpeg -ss 0 -i $1 -t 5 -s 640x480 -f image2 %03d.png
-convert -delay 20 -loop 0 *png $1.gif
+convert -delay 1x25 -coalesce -fuzz 1% -layers OptimizeTransparency -loop 0 *png $1.gif
 rm *.png
-open -a "Google Chrome" $1.gif
+open -a "Safari" $1.gif
 {% endhighlight %}
