@@ -19,9 +19,9 @@ If you can't think of any apps to create or where to start they have a whole gal
 of pre-made workflows to choose from.  I used these as inspiration and base
 for the workflows I made.
 
-![Gallery](/images/wf1.png)
-![Workflow Editor](/images/wf2.png)
-![Workflow Actions](/images/wf3.png)
-![Workflow Actions](/images/wf4.png)
-![Add to Home Screen](/images/wf5.png)
-![Notice that you can also create extensions](/images/wf6.png)
+![Gallery](/images/wf1.PNG)
+![Workflow Editor](/images/wf2.PNG)
+![Workflow Actions](/images/wf3.PNG)
+![Workflow Actions](/images/wf4.PNG)
+![Add to Home Screen](/images/wf5.PNG)
+![Notice that you can also create extensions](/images/wf6.PNG)
