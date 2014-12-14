@@ -24,6 +24,7 @@ It does a nearby search for "Suntrust", for each Suntrust it finds, it gets the
 travel time from your current location.  It then shows a list of results.
 
 If I could offer some suggestions for improvements in Workflow:
+
 1. Get Min/Max item from a list - this way I could get the nearest Suntrust automatically
 2. Sort List Ascending and Descending
 3. Top function for lists
