@@ -1,0 +1,72 @@
+==================================================================
+https://keybase.io/bboltn
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://brianbolton.me
+  * I am bboltn (https://keybase.io/bboltn) on keybase.
+  * I have a public key with fingerprint 336E D1E5 6438 BB9F 8E0D  0B42 2549 1EA4 66FE 92BF
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101449ca66184ce417245db245595417683cc25275f93f8b34faa665dfc2cf729aa0a",
+            "fingerprint": "336ed1e56438bb9f8e0d0b4225491ea466fe92bf",
+            "host": "keybase.io",
+            "key_id": "25491ea466fe92bf",
+            "kid": "0101449ca66184ce417245db245595417683cc25275f93f8b34faa665dfc2cf729aa0a",
+            "uid": "cb1782b5845f0fc48fb9e8f328673f19",
+            "username": "bboltn"
+        },
+        "service": {
+            "hostname": "brianbolton.me",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1470142589,
+    "expire_in": 157680000,
+    "prev": "92f91d8222b52af41a0d14340ba625df0f2904ac75e58b82e9f62df19ad7d6ab",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUmtMFFcUXhbLFhAtrEhlCehYYi1IZmZnZmc2FLot5aHQGAwVLQHmcQcmwMwy
+uyxQpBakhkoJD0uU0BKxEIm1gESkJEu1pCExlEraaJW2wQc2ZTVsIVAMBNs7pP7r
+z94f9+ac833fPd/JaQ7y1el9otMiu8Vnrdd8JuY43eFzZ+uqEE4RKhFrFVIENh5Q
+LACHM69IEhArgmIoRhAMz1IURhM8IDALTpACBy+SIWFE0Waex0ncQoqMWaQ5MyGy
+EEwKIo/zogVnWBZlkVhElOQCoNpVSXZCWbOZAgIGSIow0xzHiDRABZQjcJwkGAyw
+BEWJgME5ERILFYfGgM1xrAPESQrMwSBvo73/wP/PfZdtyPEcZqFxjqQJUkRFnqBF
+jgG0aMZpymIWMUYDOoAqsyUAojlOKXbKSHUsAnMuiQfaWDUfz+uqxMoaRpHjYCIW
+sauKU+GVYlgrdDrtVo3qrLRr2HLA5f2rksdJsgDHCAkuoDokRUasGETyTkmTxQgL
+9IyTNBOLgAq7pII8SUOQ0CsKj/YNcEFJBhcZTKDxwzh0hLMigbGogBFmAuVYCocT
+QEWcQQmWt5CApDkaB4xI4QK0yQoWgWI5RDNWKiuIlYB9sgVQ0yEVyKyzTAVIdcDH
++ohNOh+9zu8FvbZgugD/l55vnfXC1lVfT4MhUnVttsdVj/yV6fGGH7SXLs/5hTYZ
+11brfrgevCB+UZtzLL9gfsup31wP102bYwJv7TM+wQcDKyaic3LYhrnmN65F0UNx
+f1x0b38a/LC+Jz5le+3MaGW/vTXijpHsMLUleY/7tZQWDC4mRqzHv+1vlBzT02Fl
+44YJG7JzcVfU1Dflj7u2rXrLF4wtmQn5vwaEz/npVk54yjxr0acP2uZnyhIDZ3/P
+OjJMpKdmmbZ8F37ET2ftbmzv+x4Jn8yttf0tu5n1yqkqUJLWsTX486up90vM2e4b
+N2OelPxYgezxiZ41TPSeahhK33RvEjclt33iTumybVsbulL384WRztfi3sp65tnV
+3GXomTWd3jGLvst+1nnUduuD6zG/NJemvph+KKhppR6LHLsbtLf1o4EdO2uy/iw9
+1H6jcfTRV8cSmr4dZjNNo++5zngz7g17J+WXp3eHXLV8qvZH9Kf0v+Mrr47Fhox/
+/Wj3pcFed3JEj+2Vs/l9d04O5bZ7UtWYlqc/1QxH6cOWx79MvHi/u7DYuGBYD7t8
+Pur4+/NphQ23faf0S5mMwpw/mr6w9LjjSuPtkaj9/kl7svbu17cNrvfeNHCXXq+6
+u3Qg4UyhEIomJcT4v3myBk9OTcw/UZSRU58hDwyEzFyeWHx1bPGB+8BK9oedq+eS
+5eHc7OUH86FLxvh9xr5/AA==
+=a+Hb
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bboltn
+
+==================================================================
