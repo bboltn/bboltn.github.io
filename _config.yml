@@ -1,5 +1,5 @@
 name: brianbolton.me
 markdown: kramdown
-pygments: true
+highlighter: rouge
 timezone: America/New_York
 encoding: UTF-8
